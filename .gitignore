@@ -222,3 +222,7 @@ __marimo__/
 # Node / Vite
 node_modules/
 dist/
+
+# Raw data downloads (see README for sources)
+server/data/raw/*
+!server/data/raw/.gitkeep
