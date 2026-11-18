@@ -101,7 +101,7 @@ class Hazard(db.Model):
 class CountyRisk(db.Model):
     __tablename__  = "county_risks"
 
-    county_flips = db.Column(db.String(5), db.ForeignKey("counties.fips"), primary_key=True)
+    county_fips = db.Column(db.String(5), db.ForeignKey("counties.fips"), primary_key=True)
     hazard_code = db.Column(db.String(4), db.ForeignKey("hazards.code"), primary_key=True)
     score = db.Column(db.Float)                 # 0–100 (can be empty)
     rating = db.Column(db.String(30))           # e.g. "Relatively High"

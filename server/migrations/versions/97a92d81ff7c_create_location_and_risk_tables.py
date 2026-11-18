@@ -1,8 +1,8 @@
 """Create location and risk tables
 
-Revision ID: c08724e6fd1e
+Revision ID: 97a92d81ff7c
 Revises: 
-Create Date: 2026-11-17 15:48:44.640506
+Create Date: 2026-11-18 09:20:02.614074
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c08724e6fd1e'
+revision = '97a92d81ff7c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,13 +38,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('code', name=op.f('pk_zips'))
     )
     op.create_table('county_risks',
-    sa.Column('county_flips', sa.String(length=5), nullable=False),
+    sa.Column('county_fips', sa.String(length=5), nullable=False),
     sa.Column('hazard_code', sa.String(length=4), nullable=False),
     sa.Column('score', sa.Float(), nullable=True),
     sa.Column('rating', sa.String(length=30), nullable=True),
-    sa.ForeignKeyConstraint(['county_flips'], ['counties.fips'], name=op.f('fk_county_risks_county_flips_counties')),
+    sa.ForeignKeyConstraint(['county_fips'], ['counties.fips'], name=op.f('fk_county_risks_county_fips_counties')),
     sa.ForeignKeyConstraint(['hazard_code'], ['hazards.code'], name=op.f('fk_county_risks_hazard_code_hazards')),
-    sa.PrimaryKeyConstraint('county_flips', 'hazard_code', name=op.f('pk_county_risks'))
+    sa.PrimaryKeyConstraint('county_fips', 'hazard_code', name=op.f('pk_county_risks'))
     )
     op.create_table('zip_counties',
     sa.Column('zip_code', sa.String(length=5), nullable=False),
