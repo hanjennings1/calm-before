@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
 from sqlalchemy import text
-
+from routes.location import location_bp
 from config import Config
 from models import db
 
@@ -16,6 +16,8 @@ def create_app(config_class=Config):
     db.init_app(app)
     migrate.init_app(app, db)
     CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173"]}})
+
+    app.register_blueprint(location_bp, url_prefix="/api")
 
     # Routes
     @app.get("/api/health")
