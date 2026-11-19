@@ -226,3 +226,4 @@ dist/
 # Raw data downloads (see README for sources)
 server/data/raw/*
 !server/data/raw/.gitkeep
+.vscode/
