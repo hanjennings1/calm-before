@@ -161,6 +161,7 @@ pytest -v
 | Method | Endpoint | Description |
 | --- | --- | --- |
 | GET | `/api/health` | Checks that the API and database are reachable |
+| GET | `/api/location/<zip>` | ZIP coordinates and county (or counties), primary county first |
 
 More endpoints are coming: location lookup, alerts, risk profile, disaster history and checklist.
 
